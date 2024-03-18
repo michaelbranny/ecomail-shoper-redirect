@@ -30,7 +30,7 @@
 
 
   let params = location.search;
-  let locale = location.search.split('locale=')[1] ? location.search.split('locale=')[1] : 'pl_PL';
+  let locale = location.search.split('locale=')[1] ?? 'pl_PL';
   let domain = null;
 
   switch (locale) {
