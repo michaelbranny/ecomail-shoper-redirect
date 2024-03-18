@@ -29,9 +29,10 @@
   }, true);
 
 
-  let params = location.search;
-  let locale = params.split('locale=')[1] ?? 'pl_PL';
-  let domain = null;
+  let params = location.search
+  let urlParams = new URLSearchParams(params)
+  let locale = urlParams.get('locale') ?? 'pl_PL'
+  let domain
 
   switch (locale) {
     case 'cs_CZ' :
