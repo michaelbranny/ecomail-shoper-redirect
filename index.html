@@ -4,52 +4,50 @@
     <meta charset="UTF-8">
     <title>Shoper to Ecomail</title>
     <script src="https://dcsaascdn.net/js/dc-sdk-1.0.5.min.js" type="text/javascript"></script>
-    <script>
-      var ShopAppInstance = new ShopApp(function(app) {
-        app.init({show: true}, function(params, app) {
-          if (localStorage.getItem('styles') === null) {
-            for(var x = 0; x < params.styles.length; ++x) {
-              var el = document.createElement('link');
-              el.rel = 'stylesheet';
-              el.type = 'text/css';
-              el.href = params.styles[x];
-              document.getElementsByTagName('head')[0].appendChild(el);
-            }
-          }
-          localStorage.setItem('styles', JSON.stringify(params.styles));
-
-          app.show(null ,function () {
-            app.adjustIframeSize();
-          });
-        }, function(errmsg, app) {
-          alert(errmsg);
-        });
-      }, true);
-
-
-      let params = location.search;
-      let locale = location.search.split('locale=')[1] ? location.search.split('locale=')[1] : 'pl_PL';
-      let domain = null;
-
-      switch (locale) {
-        case 'cs_CZ' :
-          domain = '.cz'
-          break;
-        case 'en_US' :
-          domain = '.app'
-          break;
-        default :
-          domain = '.pl'
-          break;
-      }
-
-      console.log(domain, locale)
-
-      let url = "https://ecomail" + domain + "/shoper-sign-in" + params
-
-      document.write('<a id="click" target="_blank" href="' + url + '">Go to Ecomail</a>')
-    </script>
 </head>
 <body>
+<script>
+  var ShopAppInstance = new ShopApp(function(app) {
+    app.init({show: true}, function(params, app) {
+      if (localStorage.getItem('styles') === null) {
+        for(var x = 0; x < params.styles.length; ++x) {
+          var el = document.createElement('link');
+          el.rel = 'stylesheet';
+          el.type = 'text/css';
+          el.href = params.styles[x];
+          document.getElementsByTagName('head')[0].appendChild(el);
+        }
+      }
+      localStorage.setItem('styles', JSON.stringify(params.styles));
+
+      app.show(null ,function () {
+        app.adjustIframeSize();
+      });
+    }, function(errmsg, app) {
+      alert(errmsg);
+    });
+  }, true);
+
+
+  let params = location.search;
+  let locale = location.search.split('locale=')[1] ? location.search.split('locale=')[1] : 'pl_PL';
+  let domain = null;
+
+  switch (locale) {
+    case 'cs_CZ' :
+      domain = '.cz'
+      break;
+    case 'en_US' :
+      domain = '.app'
+      break;
+    default :
+      domain = '.pl'
+      break;
+  }
+
+  let url = "https://ecomail" + domain + "/shoper-sign-in" + params
+
+  document.write('<a id="click" target="_blank" href="' + url + '">Go to Ecomail</a>')
+</script>
 </body>
 </html>
